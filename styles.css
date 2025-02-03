@@ -5,7 +5,10 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
-    transition: background-color 0.3s, color 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Header */
@@ -13,17 +16,29 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px 50px;
     background-color: #222;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-#dark-mode-toggle {
-    background: none;
-    border: none;
+header nav {
+    display: flex;
+    gap: 30px;
+}
+
+header nav a {
     color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Sections */
@@ -51,12 +66,12 @@ h2 {
 /* Project List */
 .project-list {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .project-item {
-    padding: 20px;
+    padding: 25px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -70,16 +85,22 @@ footer {
     color: white;
 }
 
-/* Dark Mode */
-.dark-mode {
-    background-color: #222;
-    color: #f4f4f4;
-}
+/* Responsive Design */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    header nav {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
 
-.dark-mode header, .dark-mode footer {
-    background-color: #111;
-}
-
-.dark-mode .project-item {
-    background: #333;
+    section {
+        padding: 30px 20px;
+    }
 }
