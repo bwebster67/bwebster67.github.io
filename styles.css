@@ -95,6 +95,7 @@ header h1::after {
     background-position: right bottom;
     border: 2px solid var(--secondary);
     padding: 0.6rem 1.2rem;
+    margin: 0 0.5rem;
     transition: all 0.3s ease;
 }
 
