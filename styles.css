@@ -49,10 +49,10 @@ h2 {
     border-bottom: 3px solid var(--secondary);
 }
 
-/* Header */
+/* Updated Header */
 header {
-    background-color: var(--primary);
-    color: var(--header-text); /* White text for header */
+    background-color: #FFFFFF;
+    color: var(--text);
     padding: 1.5rem 2rem;
     position: sticky;
     top: 0;
@@ -60,31 +60,49 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(196, 90, 18, 0.2); /* Burnt orange shadow */
+    border-bottom: 3px solid var(--secondary); /* Burnt orange accent line */
 }
 
-/* Navigation */
+/* Updated Name Styling */
+header h1 {
+    color: var(--text); /* Dark gray text */
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: var(--secondary); /* Burnt orange underline */
+    border-radius: 2px;
+    animation: underlineGrow 0.5s ease-out;
+}
+
+/* Updated Navigation */
 .nav-link {
-    color: var(--header-text) !important; /* Force white text */
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: all 0.3s ease;
+    color: var(--text) !important; /* Dark gray text */
     background: linear-gradient(
         to right,
-        var(--primary) 50%,
+        #FFFFFF 50%,
         var(--secondary) 50%
     );
-    background-size: 200% 100%;
-    background-position: right bottom;
+    border: 2px solid var(--secondary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover {
-    color: var(--primary) !important;
-    background-position: left bottom;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 6px -1px rgba(196, 90, 18, 0.2);
+}
+
+.nav-link i {
+    color: var(--secondary); /* Burnt orange icons */
 }
 
 /* Animations */
