@@ -50,7 +50,7 @@ h2 {
 }
 
 header {
-    background-color: var(--header-bg); /* Dark green background */
+    background-color: var(--primary); /* Dark green background */
     color: var(--header-text);
     padding: 1.5rem 2rem;
     position: sticky;
