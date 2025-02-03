@@ -123,8 +123,44 @@ header h1::after {
     to { width: 60% }
 }
 
-/* Rest of existing CSS remains unchanged below this line */
-/* ... (project grid, resume section, footer, responsive design) ... */
+/* Section Centering */
+section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+/* Wider container for projects grid */
+#projects {
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+/* Center profile picture */
+.profile-pic-placeholder {
+    margin: 0 auto 2rem auto;
+    width: 200px;
+    height: 200px;
+    background-color: var(--light-gray);
+    border-radius: 50%;
+}
+
+/* Project grid adjustments */
+.project-grid {
+    justify-items: center;
+    padding: 0 2rem;
+}
+
+.project-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Resume section specific styling */
+#resume {
+    padding: 4rem 2rem;
+}
 
 /* Project Grid */
 .project-grid {
