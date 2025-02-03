@@ -5,37 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benjamin Webster | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Benjamin Webster</h1>
         <nav>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#resume">Resume</a>
+            <a href="#about" class="nav-link">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+            <a href="#projects" class="nav-link">
+                <i class="fas fa-code"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#resume" class="nav-link">
+                <i class="fas fa-file-download"></i>
+                <span>Resume</span>
+            </a>
         </nav>
     </header>
     
-    <section id="about">
+    <section id="about" class="fade-in">
         <h2>About Me</h2>
         <div class="profile-pic-placeholder">[Profile Picture]</div>
         <p>Hi, I'm Benjamin Webster, a Computer Science and Data Science student at Willamette University...</p>
     </section>
     
-    <section id="projects">
+    <section id="projects" class="fade-in">
         <h2>Projects</h2>
-        <div class="project-list">
-            <div class="project-item">Coming soon...</div>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Coming Soon Project</h3>
+                <p>Detailed description of project will appear here</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Machine Learning</span>
+                </div>
+            </div>
+            <!-- Add more project cards as needed -->
         </div>
     </section>
     
-    <section id="resume">
+    <section id="resume" class="fade-in">
         <h2>Resume</h2>
-        <p><a href="#">Download Resume (PDF)</a></p>
+        <a href="#" class="resume-download">
+            Download Resume
+            <i class="fas fa-arrow-down"></i>
+        </a>
     </section>
     
     <footer>
-        <p>Contact: <a href="mailto:your-email@example.com">your-email@example.com</a> | <a href="#">LinkedIn</a></p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
     </footer>
 </body>
 </html>
