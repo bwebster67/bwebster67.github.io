@@ -1,9 +1,9 @@
 /* Color Palette */
 :root {
-    --primary: #2A593D;    /* Darker green */
-    --secondary: #C45A12;  /* Burnt orange */
-    --accent: #4B8F4B;     /* Medium green */
-    --background: #F8F9FA;
+    --primary: #7daf80;    /* Primary Green */
+    --secondary: #cf4441;  /* Red */
+    --accent: #2f7133;     /* Darker Green */
+    --background: #FFFFFF;
     --text: #2D2D2D;
     --light-gray: #E9ECEF;
     --header-text: #FFFFFF; /* Added for header elements */
