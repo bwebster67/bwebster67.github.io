@@ -6,7 +6,6 @@
     --background: #FFFFFF;
     --text: #2D2D2D;
     --light-gray: #E9ECEF;
-    --header-text: #FFFFFF; /* Added for header elements */
 }
 
 /* Typography */
@@ -147,7 +146,6 @@ nav {
     to { width: 60% }
 }
 
-/* Section Centering */
 section {
     max-width: 800px;
     margin: 0 auto;
@@ -155,22 +153,21 @@ section {
     text-align: center;
 }
 
-/* Wider container for projects grid */
 #projects {
     max-width: 1200px;
     box-sizing: border-box;
 }
 
-/* Center profile picture */
-.profile-pic-placeholder {
-    margin: 0 auto 2rem auto;
-    width: 200px;
-    height: 200px;
-    background-color: var(--light-gray);
+.profile-pic {
+    width: 150px;  
+    height: 150px; 
     border-radius: 50%;
+    object-fit: cover; 
+    display: block;
+    margin: 0 auto; 
 }
 
-/* Project grid adjustments */
+
 .project-grid {
     justify-items: center;
     padding: 0 2rem;
@@ -181,12 +178,10 @@ section {
     max-width: 400px;
 }
 
-/* Resume section specific styling */
 #resume {
     padding: 4rem 2rem;
 }
 
-/* Project Grid */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -216,7 +211,6 @@ section {
     margin-right: 0.5rem;
 }
 
-/* Resume Section */
 .resume-download {
     display: inline-flex;
     align-items: center;
@@ -233,7 +227,6 @@ section {
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
     background-color: var(--primary);
     padding: 2rem;
@@ -256,7 +249,6 @@ footer {
     color: var(--secondary);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
