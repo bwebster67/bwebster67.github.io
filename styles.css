@@ -160,12 +160,14 @@ section {
 }
 
 .profile-pic {
-    width: 150px;  
-    height: 150px; 
+    width: 200px;  
+    height: 300px; 
     border-radius: 50%;
     object-fit: cover; 
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
+    border: 4px solid var(--secondary);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 
