@@ -26,7 +26,7 @@ h1, h2, h3 {
 
 h1 { 
     font-size: 2.5rem; 
-    color: var(--secondary); /* Burnt orange for name */
+    color: var(--secondary);
     position: relative;
     display: inline-block;
     padding-bottom: 0.5rem;
@@ -50,7 +50,7 @@ h2 {
 }
 
 header {
-    background-color: var(--primary); /* Dark green background */
+    background-color: var(--primary);
     color: var(--header-text);
     padding: 1.5rem 2rem;
     position: sticky;
@@ -59,8 +59,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(196, 90, 18, 0.3); /* Burnt orange shadow */
-    border-bottom: 3px solid var(--secondary); /* Orange accent line */
+    border-bottom: 3px solid var(--secondary); /* Accent line */
 }
 
 header h1 {
@@ -83,7 +82,6 @@ header h1::after {
     animation: underlineGrow 0.5s ease-out;
 }
 
-/* Updated Navigation Styles */
 nav {
     display: flex;
     gap: 1.5rem;
