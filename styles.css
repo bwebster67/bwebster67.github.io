@@ -165,7 +165,7 @@ section {
 .profile-pic {
     width: 200px;  
     height: 300px; 
-    border-radius: 50%;
+    border-radius: 20rem;
     object-fit: cover; 
     display: block;
     margin: 0 auto;
