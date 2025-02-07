@@ -189,11 +189,6 @@ section {
     padding: 0 2rem;
 }
 
-.project-card {
-    width: 100%;
-    max-width: 400px;
-}
-
 #resume {
     padding: 4rem 2rem;
 }
@@ -206,6 +201,9 @@ section {
 }
 
 .project-card {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
     background: white;
     padding: 2rem;
     border-radius: 12px;
