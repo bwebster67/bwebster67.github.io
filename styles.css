@@ -32,6 +32,14 @@ h1 {
     padding-bottom: 0.5rem;
 }
 
+.tech-stack {
+    display: flex;
+    row-gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 h1::after {
     content: '';
     position: absolute;
