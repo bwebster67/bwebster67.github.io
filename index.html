@@ -8,10 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <header>
-        <h1>Benjamin Webster</h1>
-        <nav>
+        <!-- <h1>Benjamin Webster</h1> -->
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/ben-webster-0b4700293/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/bwebster67/"><i class="fab fa-github"></i></a>
+            <a href="mailto:bkwebster@willamette.edu"><i class="fas fa-envelope"></i></a>
+        </div>
+        <nav style="grid-column: 2;">
             <a href="#about" class="nav-link">
                 <i class="fas fa-user"></i>
                 <span>About</span>
@@ -27,29 +33,44 @@
         </nav>
     </header>
     
-    <section id="about" class="fade-in">
-        <h2>About Me</h2>
-        <div class="profile-container">
-            <img src="profile_picture.png" alt="Profile Picture" class="profile-pic">
-            <p>Hi, I'm Benjamin Webster, a Computer Science and Data Science student at Willamette University</p>
+    <div style="height: 4rem;"></div>
+
+
+    <div class="profile-container">
+        <div>
+            <!-- <h2>Hello, I am</h2> -->
+            <h1>Ben Webster</h1>
+            <h3>Undergraduate Researcher, Tutor, and Computer Scientist</h3>
         </div>
-    </section>
+        <!-- <p>Hi, I'm Benjamin Webster, a Computer Science and Data Science student at Willamette University</p> -->
+        <img src="headshot_cropped.jpg" alt="Profile Picture" class="profile-pic">
+    </div>
     
+
+    <div style="height: 4rem;"></div>
+
+
     <section id="projects" class="fade-in">
         <h2>Projects</h2>
         <div class="project-grid">
-            <div class="project-card">
-                <h3>Pedalogical (Coming Soon)</h3>
-                <p>Detailed description of project will appear here</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">C#</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">.NET</span>
-                    <span class="tech-tag">Blazor</span>
-                    <span class="tech-tag">PostgreSQL</span>
+
+            <!-- Pedalogical -->
+            <div class="project-card" style="transform-style: preserve-3d" data-tilt data-tilt-max="5">
+                <div style="transform: translateZ(10px)"> 
+                    <h3>Pedalogical</h3>
+                    <p>Detailed description of project will appear here</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">Blazor</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
                 </div>
             </div>
-            <div class="project-card">
+
+            <!-- Campus Nav -->
+            <div class="project-card" style="transform-style: preserve-3d" data-tilt data-tilt-max="5">
                 <h3>Campus Navigation</h3>
                 <p>Detailed description of project will appear here</p>
                 <div class="tech-stack">
@@ -57,13 +78,16 @@
                     <span class="tech-tag">HTML</span>
                 </div>
             </div>
-            <div class="project-card">
-                <h3>SHA256 Implementation</h3>
+
+            <!-- SHA256 -->
+            <div class="project-card" style="transform-style: preserve-3d" data-tilt data-tilt-max="5">
+                <h3>SHA256</h3>
                 <p>Detailed description of project will appear here</p>
                 <div class="tech-stack">
                     <span class="tech-tag">C</span>
                 </div>
             </div>
+
         </div>
     </section>
     
@@ -86,5 +110,9 @@
             <a href="mailto:bkwebster@willamette.edu"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
+
+
+    <!-- <script src="tilt.jquery.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 </body>
 </html>
