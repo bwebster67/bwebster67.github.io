@@ -29,16 +29,98 @@
     --background: hsl(100, 7%, 92%);
     --text: #2D2D2D;
     --light-gray: #E9ECEF;
+
+    /* Departure Mono Colors */
+    --flick: cubic-bezier(.36, 2.09, .07, -1.52);
+    --amber: #ffa133;
+    --pumpkin: #e47b1a;
+    --flux: #c8be50;
+    --foam: #bccabb;
+    --enamel: #eeeeee;
+    --cement: #c0c0c0;
+    --aluminum: #cccccc;
+    --ash: #8e8e8e;
+    --mud: #8a8a6f;
+    --clay: #6c6c58;
+    --smoke: #666666;
+    --dark: #444444;
+    --soot: #333333;
+    --carbon: #222222;
+    --black: #141414;
+    --accent: var(--amber);
+    --fg: var(--dark);
+    --bg: var(--enamel);
 }
 
 /* Typography */
 body {
-    font-family: 'GoogleSansCode', sans-serif;
+    font-family: 'DepartureMono', 'GoogleSansCode', sans-serif;
     line-height: 1.6;
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--bg);
+    color: var(--fg);
     margin: 0;
     padding: 0;
+}
+
+.header-pad {
+    padding: 137px 0 0 0
+}
+
+.max-width {
+    max-width: 1440px;
+    padding-inline: 44px;
+    margin: 0 auto;
+}
+
+.name-header {
+    font-size: 88px;
+    background-color: var(--aluminum);
+    color: var(--soot);
+    line-height: 1;
+    white-space: pre;
+    display: inline-block;
+}
+
+.name-header-subtext {
+    position: relative;
+    top: 10px;
+    left: 11px;
+    font-size: 11px;
+    vertical-align: top;
+}
+
+.headline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin: 8px 22px 0 0;
+    color: var(--dark);
+
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+menu>a {
+    text-decoration: none; /* removes underline */
+    font-size: 16.5px;
+    line-height: 21px;
+    transition: background-color 75ms var(--flick);
+    color: var(--dark);
+}
+
+menu a:hover {
+    background-color: var(--foam);
 }
 
 h1, h2, h3 {
