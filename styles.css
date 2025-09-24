@@ -1,4 +1,26 @@
-/* Color Palette */
+
+@font-face {
+    font-family: "GoogleSansCode"; 
+    src: url("fonts/GoogleSansCode-VariableFont_wght.ttf") format("truetype"); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+@font-face {
+    font-family: "GoogleSansCodeItalic"; 
+    src: url("fonts/GoogleSansCode-Italic-VariableFont_wght.ttf") format("truetype"); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+/* Use increments of 11px for pixel-perfect */
+@font-face {
+    font-family: "DepartureMono"; 
+    src: url("fonts/DepartureMono-Regular.otf") format("truetype"); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
 :root {
     --primary: #7daf80;    
     --secondary: hsl(128, 15%, 45%); 
@@ -11,7 +33,7 @@
 
 /* Typography */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'GoogleSansCode', sans-serif;
     line-height: 1.6;
     background-color: var(--background);
     color: var(--text);
