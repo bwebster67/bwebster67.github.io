@@ -209,7 +209,7 @@ menu a:hover {
 
 .project-section-grid {
     display: grid;
-    grid-template-columns: 40vw 6px auto;
+    grid-template-columns: 50vw 6px auto;
     gap: 1rem;
     padding: 0 6rem 0 6rem;
 }
@@ -219,12 +219,51 @@ menu a:hover {
     grid-template-rows: repeat(8, auto);
     gap: 1rem;
     justify-items: left;
+    padding: 0 1rem 0 3rem;
 }
 
 .project-label {
     font-family: 'DepartureMono';
-    font-size: 25px;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    
+    --t: 3px;  /* the thickness of the border */
+    --g: 10px; /* the gap between the border and image */
+    padding: calc(var(--g) + var(--t));
 }
+
+.project-label:hover {
+    --s: 17px; /* the size on the corner */
+    --t: 3px;  /* the thickness of the border */
+    --g: 10px; /* the gap between the border and image */
+
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid var(--pumpkin); /* the color here */
+    outline-offset: calc(-1*var(--t));
+    mask:
+        conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+        0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+        conic-gradient(#000 0 0) content-box;
+}
+
+.project-label.selected .project-name {
+    background-color: var(--pumpkin);
+}
+
+.universal-project-card {
+    font-family: 'DepartureMono';
+}
+
+.project-content {
+    display: none; /* Hide all descriptions by default */
+}
+
+.project-content.active {
+    display: block; /* Show the active one */
+}
+
 
 h1, h2, h3 {
     font-weight: 600;
