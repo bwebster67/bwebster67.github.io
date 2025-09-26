@@ -49,7 +49,6 @@ function alterOneCharacter(originalInputText, currentInputText) {
         : replacedChar;
     let stringCombined = stringStart + replacingChar + stringEnd;
 
-    console.log(stringCombined);
     console.log(rand);
     console.log("replaced: "+ replacedChar + " with " + replacingChar + " at index " + rand);
     return stringCombined;
@@ -85,10 +84,11 @@ function updateText() {
     // console.log("replaced: "+ replacedChar + " with " + replacingChar + " at index " + rand);
     // mySpan.innerText = stringCombined;
     alteredText = alterOneCharacter(originalText, currentText);
+    alteredText = alterOneCharacter(alteredText, currentText);
     console.log(alteredText);
     mySpan.innerText = alteredText;
 
 }
 
-// Makes this run once per 2000ms 
+// Makes this run once per X miliseconds 
 setInterval(updateText, 750);

@@ -127,11 +127,22 @@ menu a:hover {
     position: relative;
     width: 100%;
     overflow-x: hidden;
-    height: 100vw;
+    overflow: hidden;
+    min-height: 115vh;
     /* display: grid;
     grid-template-columns: 155px 1fr;
     gap: 187px;
     margin: 185px 0 492px 87px; */
+}
+
+.section-2-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* position: relative; */
+    width: 100%;
+    overflow-x: hidden;
+    height: 100vh;
 }
 
 .brief-container {
@@ -141,7 +152,7 @@ menu a:hover {
     transform: scale(1.4);
     display: grid;
 
-    left: 26rem;
+    left: 22rem;
     top: 16rem;
     z-index: -1;
 }
@@ -187,6 +198,32 @@ menu a:hover {
     min-height: 100px;
     display: block;
     object-fit: cover;
+}
+
+.projects-header {
+    font-family: 'DepartureMono';
+    font-size: 28px;
+    text-align: center;
+    margin: 2rem 0 4rem 0;
+}
+
+.project-section-grid {
+    display: grid;
+    grid-template-columns: 40vw 6px auto;
+    gap: 1rem;
+    padding: 0 6rem 0 6rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-rows: repeat(8, auto);
+    gap: 1rem;
+    justify-items: left;
+}
+
+.project-label {
+    font-family: 'DepartureMono';
+    font-size: 25px;
 }
 
 h1, h2, h3 {
@@ -361,14 +398,7 @@ section {
     padding: 4rem 2rem;
 }
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    justify-items: center;
-    padding: 0 2rem;
-}
+
 
 .project-card {
     /* width: 100%; */
