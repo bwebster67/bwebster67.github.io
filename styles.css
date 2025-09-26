@@ -123,6 +123,72 @@ menu a:hover {
     background-color: var(--foam);
 }
 
+.section-1-container {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    height: 100vw;
+    /* display: grid;
+    grid-template-columns: 155px 1fr;
+    gap: 187px;
+    margin: 185px 0 492px 87px; */
+}
+
+.brief-container {
+    overflow-clip-margin: content-box;
+    object-fit: fill;
+    position: absolute;
+    transform: scale(1.4);
+    display: grid;
+
+    left: 26rem;
+    top: 16rem;
+    z-index: -1;
+}
+
+.brief-container > * {
+  grid-area: 1 / 1 / 2 / 2; /* All children occupy the same grid cell */
+}
+
+.brief {
+    /* overflow-clip-margin: content-box; */
+    /* overflow: clip; */
+    /* position: absolute; */
+    /* left: 24rem; */
+    /* top: 15rem; */
+    z-index: -1;
+}
+
+.brief-contents {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.brief-text {
+    font-family: 'DepartureMono';
+    font-size: 13px;
+    font-weight: 500;
+    /* position: absolute; */
+    /* top: 2rem; */
+    /* left: 7rem; */
+    line-height: normal;
+}
+
+.brief-image {
+    /* position: absolute; */
+    /* top: 2rem; */
+    /* padding-left: 33rem; */
+    padding: 2rem 0 0 0;
+    width: auto;  
+    max-width: 300px;
+    min-width: 100px;
+    height: auto; 
+    max-height: 300px;
+    min-height: 100px;
+    display: block;
+    object-fit: cover;
+}
+
 h1, h2, h3 {
     font-weight: 600;
     margin: 0 0 1.5rem 0;

@@ -27,9 +27,14 @@ function randomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function alterOneCharacter(originalInputText) {
+function alterOneCharacter(originalInputText, currentInputText) {
 
-    let rand = randomIntInclusive(0, originalInputText.length);
+    let coinflip = Math.random();
+    if (coinflip > 0.5) {
+        return currentInputText;
+    }
+
+    let rand = randomIntInclusive(0, originalInputText.length-1);
 
     if (rand != originalInputText.length) {
         stringStart = originalInputText.slice(0, rand);
@@ -79,11 +84,11 @@ function updateText() {
     // console.log(stringCombined)
     // console.log("replaced: "+ replacedChar + " with " + replacingChar + " at index " + rand);
     // mySpan.innerText = stringCombined;
-    alteredText = alterOneCharacter(originalText);
+    alteredText = alterOneCharacter(originalText, currentText);
     console.log(alteredText);
     mySpan.innerText = alteredText;
 
 }
 
 // Makes this run once per 2000ms 
-setInterval(updateText, 2000);
+setInterval(updateText, 750);
