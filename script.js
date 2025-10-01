@@ -151,7 +151,7 @@ function resetAnimationForCard(card) {
         instances.forEach(t => t.destroy());
         cardAnimationState.delete(card);
     }
-    // Clear the HTML content
+    // // Clear the HTML content
     // card.querySelector('h1').innerHTML = '';
     // card.querySelector('p').innerHTML = '';
     // card.querySelector('h3').innerHTML = '';
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mutation.attributeName === 'class') {
                     const cardElement = mutation.target;
                     // ONLY play the animation if the initial scroll has already happened.
-                    if (hasScrolledIntoView && cardElement.classList.contains('active')) {
+                    if (cardElement.classList.contains('active')) {
                         playAnimationForCard(cardElement);
                     } else {
                         resetAnimationForCard(cardElement);
