@@ -209,16 +209,18 @@ menu a:hover {
 
 .project-section-max-width {
     padding: 0 3rem 0 3rem;
+    perspective: 300px;
 }
 
 .project-section-grid {
     display: grid;
-    grid-template-columns: 50vw 6px auto;
+    grid-template-columns: 50vw auto;
     gap: 1rem;
-    padding: 1rem 3rem 0 3rem;
-
-    /* TEMP? */
+    padding: 1rem 3rem 1rem 3rem;
     background-color: var(--soot);
+    /* temp */
+    transform: rotateX(0.5deg);
+    transform-origin: center top;
 }
 
 .project-grid {
@@ -227,6 +229,7 @@ menu a:hover {
     gap: 1rem;
     justify-items: left;
     padding: 0 1rem 0 3rem;
+    border-left: 2px solid var(--pumpkin);
 
 }
 
@@ -267,13 +270,19 @@ menu a:hover {
 }
 
 .project-content {
-    /* TEMP? */
     color: var(--pumpkin); 
     background-color: var(--soot);
 
-    display: none; /* Hide all descriptions by default */
-    font-family: "DepartureMono";
+    display: none; /* hide all descriptions by default */
+    font-family: "DepartureMono"; 
     font-size: 18px;
+
+    /* TEMP */
+    /* text-shadow: 0 0 2px rgba(255, 153, 0, 0.5),
+            0 0 4px rgba(255, 153, 0, 0.4),
+            0 0 8px rgba(255, 153, 0, 0.2); */
+    text-shadow: 0 0 4px rgba(255, 153, 0, 0.6);
+    
 }
 
 .project-content.active {
@@ -296,6 +305,9 @@ menu a:hover {
     font-size: 22px;
     margin: 0.5rem 0 0.25rem 0;
     display: inline-block;
+}
+.project-content pre {
+    margin: 0 0 0 0 ;
 }
 
 /* This is the essential Typed.js cursor styling */
@@ -414,7 +426,7 @@ nav {
 .nav-link:hover {
     background: var(--secondary);
     border-color: var(--secondary);
-    transform: translateY(-2px);
+    /* transform: translateY(-2px); */
     /* box-shadow: 0 4px 12px rgba(196, 90, 18, 0.3); */
 }
 
