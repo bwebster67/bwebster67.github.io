@@ -204,14 +204,21 @@ menu a:hover {
     font-family: 'DepartureMono';
     font-size: 28px;
     text-align: center;
-    margin: 2rem 0 4rem 0;
+    margin: 2rem 0 2rem 0;
+}
+
+.project-section-max-width {
+    padding: 0 3rem 0 3rem;
 }
 
 .project-section-grid {
     display: grid;
     grid-template-columns: 50vw 6px auto;
     gap: 1rem;
-    padding: 0 6rem 0 6rem;
+    padding: 1rem 3rem 0 3rem;
+
+    /* TEMP? */
+    background-color: var(--soot);
 }
 
 .project-grid {
@@ -220,11 +227,13 @@ menu a:hover {
     gap: 1rem;
     justify-items: left;
     padding: 0 1rem 0 3rem;
+
 }
 
 .project-label {
     font-family: 'DepartureMono';
     font-size: 28px;
+    color: var(--cement);
     width: 100%;
     text-align: center;
     cursor: pointer;
@@ -250,6 +259,7 @@ menu a:hover {
 
 .project-label.selected .project-name {
     background-color: var(--pumpkin);
+    color: var(--carbon);
 }
 
 .universal-project-card {
@@ -257,21 +267,55 @@ menu a:hover {
 }
 
 .project-content {
+    /* TEMP? */
+    color: var(--pumpkin); 
+    background-color: var(--soot);
+
     display: none; /* Hide all descriptions by default */
+    font-family: "DepartureMono";
+    font-size: 18px;
 }
 
 .project-content.active {
     display: block; /* Show the active one */
 }
 
+/* Styling for inside the project cards */
+.project-content h1, h2, h3 {
+    font-family: "DepartureMono";
+    margin: 0 0 0.5rem 0;
+}
+.project-content > * {
+    font-family: "DepartureMono";
+}
+.project-content h1 {
+    font-size: 44px;
+    margin-top: 0px;
+}
+.project-content h3 {
+    font-size: 22px;
+    margin: 0.5rem 0 0.25rem 0;
+}
 
-h1, h2, h3 {
+/* This is the essential Typed.js cursor styling */
+.typed-cursor {
+    opacity: 1;
+    animation: typedjsBlink 0.7s infinite;
+}
+@keyframes typedjsBlink {
+    50% { opacity: 0.0; }
+}
+
+
+
+
+/* h1, h2, h3 {
     font-weight: 600;
     margin: 0 0 1.5rem 0;
     color: var(--header-color)
-}
+} */
 
-h1 { 
+/* h1 { 
     font-size: 5rem; 
     color: var(--header-color);
     position: relative;
@@ -279,9 +323,9 @@ h1 {
     padding-bottom: 0.5rem;
     line-height: normal;
     margin-bottom: 0.5rem;
-}
+} */
 
-h2 {
+/* h2 {
     font-size: 3rem; 
     margin: 0;
 }
@@ -290,7 +334,7 @@ h3 {
     color: var(--secondary);
     font-size: 2rem;
     font-weight: 450;
-}
+} */
 
 .tech-stack {
     display: flex;

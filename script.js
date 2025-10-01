@@ -126,3 +126,112 @@ projectLabels.forEach((label, index) => {
                 // loadProjectCard(currentlySelectedIndex);
             });
         });
+
+
+// 
+// 
+// TEST typed.js
+// 
+// 
+
+// --- CONFIGURATION ---
+// Set your desired speed here. Lower number = faster typing.
+const typeSpeed = 30; // 30ms is fast and readable
+const startDelay = 100;
+
+// --- ANIMATION FUNCTIONS ---
+// All functions are now defined here, in one place.
+
+// An object to hold our Typed instances so we can destroy them later
+let typedInstances = [];
+
+// Function to clear previous content and animations
+function resetPedalogicalAnimation() {
+    typedInstances.forEach(t => t.destroy());
+    typedInstances = [];
+    document.getElementById('type-h1').innerHTML = '';
+    document.getElementById('type-p').innerHTML = '';
+    document.getElementById('type-h3').innerHTML = '';
+    document.getElementById('type-pre').innerHTML = '';
+}
+
+// Main function to start the entire animation chain
+function playPedalogicalAnimation() {
+    resetPedalogicalAnimation();
+
+    const typeH1 = new Typed('#type-h1', {
+        strings: ['PEDALOGICAL'],
+        typeSpeed: typeSpeed, // Using your variable
+        showCursor: false,
+        onComplete: () => typeDescription()
+    });
+
+    function typeDescription() {
+        const typeP = new Typed('#type-p', {
+            strings: ['A brief but engaging description of the project goes here.'],
+            typeSpeed: typeSpeed, // Using your variable
+            startDelay: startDelay,
+            showCursor: false,
+            onComplete: () => typeTechStackHeader()
+        });
+        typedInstances.push(typeP);
+    }
+    
+    function typeTechStackHeader() {
+        const typeH3 = new Typed('#type-h3', {
+            strings: ['TECH STACK'],
+            typeSpeed: typeSpeed, // Using your variable
+            startDelay: startDelay,
+            showCursor: false,
+            onComplete: () => typePreBlock()
+        });
+        typedInstances.push(typeH3);
+    }
+
+    function typePreBlock() {
+        const techStack = `&gt; C#
+&gt; HTML/CSS
+&gt; .NET
+&gt; Blazor
+&gt; PostgreSQL`;
+        const typePre = new Typed('#type-pre', {
+            strings: [techStack],
+            typeSpeed: typeSpeed, // Using your variable
+            startDelay: startDelay,
+            cursorChar: '_',
+            loop: false,
+            onComplete: (self) => self.cursor.style.display = 'none'
+        });
+        typedInstances.push(typePre);
+    }
+    
+    typedInstances.push(typeH1);
+}
+
+
+// --- TRIGGER LOGIC ---
+// This block now ONLY contains the trigger logic that runs after the page loads.
+document.addEventListener('DOMContentLoaded', () => {
+    const pedalogicalContainer = document.getElementById('pedalogical');
+    const config = { attributes: true, attributeFilter: ['class'] };
+
+    const callback = (mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.attributeName === 'class') {
+                if (pedalogicalContainer.classList.contains('active')) {
+                    playPedalogicalAnimation(); // Calling the function defined above
+                } else {
+                    resetPedalogicalAnimation(); // Calling the function defined above
+                }
+            }
+        }
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(pedalogicalContainer, config);
+
+    // Check the initial state on page load
+    if (pedalogicalContainer.classList.contains('active')) {
+        playPedalogicalAnimation();
+    }
+});
