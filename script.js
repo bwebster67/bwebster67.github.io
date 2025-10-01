@@ -130,7 +130,7 @@ projectLabels.forEach((label, index) => {
 
 // 
 // 
-// TEST typed.js
+// Project content typing animation using typed.js
 // 
 // 
 
@@ -152,10 +152,10 @@ function resetAnimationForCard(card) {
         cardAnimationState.delete(card);
     }
     // Clear the HTML content
-    card.querySelector('h1').innerHTML = '';
-    card.querySelector('p').innerHTML = '';
-    card.querySelector('h3').innerHTML = '';
-    card.querySelector('pre').innerHTML = '';
+    // card.querySelector('h1').innerHTML = '';
+    // card.querySelector('p').innerHTML = '';
+    // card.querySelector('h3').innerHTML = '';
+    // card.querySelector('pre').innerHTML = '';
 }
 
 /**
@@ -165,10 +165,10 @@ function resetAnimationForCard(card) {
 function playAnimationForCard(card) {
     resetAnimationForCard(card);
 
-    const h1Target = card.querySelector('h1');
-    const pTarget = card.querySelector('p');
-    const h3Target = card.querySelector('h3');
-    const preTarget = card.querySelector('pre');
+    const h1Target = card.querySelector('h1 .type-target');
+    const pTarget = card.querySelector('p .type-target');
+    const h3Target = card.querySelector('h3 .type-target');
+    const preTarget = card.querySelector('pre .type-target');
 
     const h1Text = card.dataset.h1 || '';
     const pText = card.dataset.p || '';
@@ -185,15 +185,21 @@ function playAnimationForCard(card) {
 
     function typeDescription() {
         const typeP = new Typed(pTarget, {
-            strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
-            onComplete: () => typeTechStackHeader()
+            strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '█',
+            onComplete: (self) => {
+                self.cursor.style.display = 'none';
+                typeTechStackHeader();
+            }
         });
         typedInstances.push(typeP);
     }
     function typeTechStackHeader() {
         const typeH3 = new Typed(h3Target, {
-            strings: [h3Text], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
-            onComplete: () => typePreBlock()
+            strings: [h3Text], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '█',
+            onComplete: (self) => {
+                self.cursor.style.display = 'none';
+                typePreBlock();
+            }
         });
         typedInstances.push(typeH3);
     }
