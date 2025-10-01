@@ -230,13 +230,27 @@ menu a:hover {
     justify-items: left;
     padding: 0 1rem 0 3rem;
     border-left: 2px solid var(--pumpkin);
+    /* box-shadow: 0px 0 4px rgba(255, 153, 0, 0.6); */
+}
+/* This creates the glowing element */
+.project-grid::before {
+    content: ""; /* Pseudo-elements must have a content property */
+    position: absolute;
+    top: 0;
+    left: -2px; /* Position it directly over the 2px border */
+    width: 2px;
+    height: 100%;
 
+    /* The Glow Effect! */
 }
 
 .project-label {
     font-family: 'DepartureMono';
     font-size: 28px;
-    color: var(--cement);
+    font-weight: 600;
+    /* color: var(--cement); */
+    color: var(--pumpkin);
+    text-shadow: 0 0 4px rgba(255, 153, 0, 0.6);
     width: 100%;
     text-align: center;
     cursor: pointer;
@@ -252,12 +266,14 @@ menu a:hover {
     --g: 10px; /* the gap between the border and image */
 
     padding: calc(var(--g) + var(--t));
-    outline: var(--t) solid var(--pumpkin); /* the color here */
+    outline: var(--t) solid var(--pumpkin); /* the color */
     outline-offset: calc(-1*var(--t));
     mask:
         conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
         0 0/calc(100% - var(--s)) calc(100% - var(--s)),
         conic-gradient(#000 0 0) content-box;
+
+    text-shadow: 0 0 7px rgba(255, 153, 0, 0.6);
 }
 
 .project-label.selected .project-name {
@@ -506,6 +522,7 @@ section {
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: transform 0.3s ease;
     border-left: 4px solid var(--secondary);
+    
 }
 
 /* .project-card:hover {
