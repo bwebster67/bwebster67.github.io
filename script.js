@@ -135,71 +135,71 @@ projectLabels.forEach((label, index) => {
 // 
 
 // --- CONFIGURATION ---
-// Set your desired speed here. Lower number = faster typing.
-const typeSpeed = 30; // 30ms is fast and readable
+const typeSpeed = 10;
 const startDelay = 100;
 
-// --- ANIMATION FUNCTIONS ---
-// All functions are now defined here, in one place.
+// A Map to store Typed instances for each card, so we can manage them.
+const cardAnimationState = new Map();
 
-// An object to hold our Typed instances so we can destroy them later
-let typedInstances = [];
-
-// Function to clear previous content and animations
-function resetPedalogicalAnimation() {
-    typedInstances.forEach(t => t.destroy());
-    typedInstances = [];
-    document.getElementById('type-h1').innerHTML = '';
-    document.getElementById('type-p').innerHTML = '';
-    document.getElementById('type-h3').innerHTML = '';
-    document.getElementById('type-pre').innerHTML = '';
+/**
+ * Resets the animation for a specific card.
+ * @param {HTMLElement} card The project card element to reset.
+ */
+function resetAnimationForCard(card) {
+    if (cardAnimationState.has(card)) {
+        const instances = cardAnimationState.get(card);
+        instances.forEach(t => t.destroy());
+        cardAnimationState.delete(card);
+    }
+    // Clear the HTML content
+    card.querySelector('h1').innerHTML = '';
+    card.querySelector('p').innerHTML = '';
+    card.querySelector('h3').innerHTML = '';
+    card.querySelector('pre').innerHTML = '';
 }
 
-// Main function to start the entire animation chain
-function playPedalogicalAnimation() {
-    resetPedalogicalAnimation();
+/**
+ * Plays the full, chained animation for a specific card.
+ * @param {HTMLElement} card The project card element to animate.
+ */
+function playAnimationForCard(card) {
+    resetAnimationForCard(card);
 
-    const typeH1 = new Typed('#type-h1', {
-        strings: ['PEDALOGICAL'],
-        typeSpeed: typeSpeed, // Using your variable
-        showCursor: false,
+    const h1Target = card.querySelector('h1');
+    const pTarget = card.querySelector('p');
+    const h3Target = card.querySelector('h3');
+    const preTarget = card.querySelector('pre');
+
+    const h1Text = card.dataset.h1 || '';
+    const pText = card.dataset.p || '';
+    const h3Text = card.dataset.h3 || '';
+    const preText = (card.dataset.pre || '').split('|').join('\n');
+    
+    let typedInstances = [];
+    cardAnimationState.set(card, typedInstances);
+
+    const typeH1 = new Typed(h1Target, {
+        strings: [h1Text], typeSpeed: typeSpeed * 3, showCursor: false,
         onComplete: () => typeDescription()
     });
 
     function typeDescription() {
-        const typeP = new Typed('#type-p', {
-            strings: ['A brief but engaging description of the project goes here.'],
-            typeSpeed: typeSpeed, // Using your variable
-            startDelay: startDelay,
-            showCursor: false,
+        const typeP = new Typed(pTarget, {
+            strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
             onComplete: () => typeTechStackHeader()
         });
         typedInstances.push(typeP);
     }
-    
     function typeTechStackHeader() {
-        const typeH3 = new Typed('#type-h3', {
-            strings: ['TECH STACK'],
-            typeSpeed: typeSpeed, // Using your variable
-            startDelay: startDelay,
-            showCursor: false,
+        const typeH3 = new Typed(h3Target, {
+            strings: [h3Text], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
             onComplete: () => typePreBlock()
         });
         typedInstances.push(typeH3);
     }
-
     function typePreBlock() {
-        const techStack = `&gt; C#
-&gt; HTML/CSS
-&gt; .NET
-&gt; Blazor
-&gt; PostgreSQL`;
-        const typePre = new Typed('#type-pre', {
-            strings: [techStack],
-            typeSpeed: typeSpeed, // Using your variable
-            startDelay: startDelay,
-            cursorChar: '_',
-            loop: false,
+        const typePre = new Typed(preTarget, {
+            strings: [preText], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '_', loop: false,
             onComplete: (self) => self.cursor.style.display = 'none'
         });
         typedInstances.push(typePre);
@@ -208,30 +208,372 @@ function playPedalogicalAnimation() {
     typedInstances.push(typeH1);
 }
 
-
 // --- TRIGGER LOGIC ---
-// This block now ONLY contains the trigger logic that runs after the page loads.
 document.addEventListener('DOMContentLoaded', () => {
-    const pedalogicalContainer = document.getElementById('pedalogical');
-    const config = { attributes: true, attributeFilter: ['class'] };
+    // This flag tracks if the initial scroll animation has happened yet.
+    let hasScrolledIntoView = false;
 
-    const callback = (mutationsList) => {
-        for (const mutation of mutationsList) {
-            if (mutation.attributeName === 'class') {
-                if (pedalogicalContainer.classList.contains('active')) {
-                    playPedalogicalAnimation(); // Calling the function defined above
-                } else {
-                    resetPedalogicalAnimation(); // Calling the function defined above
+    const projectCards = document.querySelectorAll('.project-content');
+
+    // --- Part 1: MutationObserver for Active State Changes ---
+    const mutationObserverConfig = { attributes: true, attributeFilter: ['class'] };
+
+    projectCards.forEach(card => {
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.attributeName === 'class') {
+                    const cardElement = mutation.target;
+                    // ONLY play the animation if the initial scroll has already happened.
+                    if (hasScrolledIntoView && cardElement.classList.contains('active')) {
+                        playAnimationForCard(cardElement);
+                    } else {
+                        resetAnimationForCard(cardElement);
+                    }
                 }
             }
-        }
-    };
+        });
+        observer.observe(card, mutationObserverConfig);
+    });
 
-    const observer = new MutationObserver(callback);
-    observer.observe(pedalogicalContainer, config);
+    // --- Part 2: IntersectionObserver for the Initial Scroll ---
+    const intersectionObserverOptions = { threshold: 1 };
+    
+    // We only need to observe one element, like the first project card,
+    // to know when the whole section is visible.
+    const firstProjectCard = document.querySelector('.project-content');
 
-    // Check the initial state on page load
-    if (pedalogicalContainer.classList.contains('active')) {
-        playPedalogicalAnimation();
+    if (firstProjectCard) {
+        const intersectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Set the flag to true so the MutationObserver can now take over.
+                    hasScrolledIntoView = true;
+
+                    // Find which card is currently active and play its animation.
+                    const activeCard = document.querySelector('.project-content.active');
+                    if (activeCard) {
+                        playAnimationForCard(activeCard);
+                    }
+
+                    // Disconnect this observer; its job is done.
+                    observer.disconnect();
+                }
+            });
+        }, intersectionObserverOptions);
+
+        intersectionObserver.observe(firstProjectCard);
     }
 });
+
+
+// // --- CONFIGURATION ---
+// const typeSpeed = 10;
+// const startDelay = 100;
+
+// // --- GENERIC ANIMATION & RESET FUNCTIONS ---
+
+// // A Map to store Typed instances for each card, so we can manage them.
+// const cardAnimationState = new Map();
+
+// /**
+//  * Resets the animation for a specific card.
+//  * @param {HTMLElement} card The project card element to reset.
+//  */
+// function resetAnimationForCard(card) {
+//     if (cardAnimationState.has(card)) {
+//         const instances = cardAnimationState.get(card);
+//         instances.forEach(t => t.destroy());
+//         cardAnimationState.delete(card);
+//     }
+//     // Clear the HTML content
+//     card.querySelector('h1').innerHTML = '';
+//     card.querySelector('p').innerHTML = '';
+//     card.querySelector('h3').innerHTML = '';
+//     card.querySelector('pre').innerHTML = '';
+// }
+
+// /**
+//  * Plays the full, chained animation for a specific card.
+//  * @param {HTMLElement} card The project card element to animate.
+//  */
+// function playAnimationForCard(card) {
+//     // First, ensure the card is reset before playing
+//     resetAnimationForCard(card);
+
+//     const h1Target = card.querySelector('h1');
+//     const pTarget = card.querySelector('p');
+//     const h3Target = card.querySelector('h3');
+//     const preTarget = card.querySelector('pre');
+
+//     const h1Text = card.dataset.h1 || '';
+//     const pText = card.dataset.p || '';
+//     const h3Text = card.dataset.h3 || '';
+//     const preText = (card.dataset.pre || '').split('|').join('\n');
+    
+//     let typedInstances = [];
+//     cardAnimationState.set(card, typedInstances);
+
+//     const typeH1 = new Typed(h1Target, {
+//         strings: [h1Text], typeSpeed: typeSpeed * 3, showCursor: false,
+//         onComplete: () => typeDescription()
+//     });
+
+//     function typeDescription() {
+//         const typeP = new Typed(pTarget, {
+//             strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
+//             onComplete: () => typeTechStackHeader()
+//         });
+//         typedInstances.push(typeP);
+//     }
+//     function typeTechStackHeader() {
+//         const typeH3 = new Typed(h3Target, {
+//             strings: [h3Text], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
+//             onComplete: () => typePreBlock()
+//         });
+//         typedInstances.push(typeH3);
+//     }
+//     function typePreBlock() {
+//         const typePre = new Typed(preTarget, {
+//             strings: [preText], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '_', loop: false,
+//             onComplete: (self) => self.cursor.style.display = 'none'
+//         });
+//         typedInstances.push(typePre);
+//     }
+    
+//     typedInstances.push(typeH1);
+// }
+
+// // --- TRIGGER LOGIC ---
+// document.addEventListener('DOMContentLoaded', () => {
+//     const projectCards = document.querySelectorAll('.project-content');
+
+//     const observerConfig = { attributes: true, attributeFilter: ['class'] };
+
+//     projectCards.forEach(card => {
+//         const observer = new MutationObserver((mutationsList) => {
+//             for (const mutation of mutationsList) {
+//                 if (mutation.attributeName === 'class') {
+//                     const cardElement = mutation.target;
+//                     // When card becomes active, play animation
+//                     if (cardElement.classList.contains('active')) {
+//                         playAnimationForCard(cardElement);
+//                     } 
+//                     // When card is no longer active, reset it
+//                     else {
+//                         resetAnimationForCard(cardElement);
+//                     }
+//                 }
+//             }
+//         });
+
+//         observer.observe(card, observerConfig);
+//     });
+
+//     // --- INITIAL STATE CHECK ---
+//     // Check if any card starts with the 'active' class on page load
+//     const activeCard = document.querySelector('.project-content.active');
+//     if (activeCard) {
+//         playAnimationForCard(activeCard);
+//     }
+// });
+
+
+// // --- CONFIGURATION ---
+// const typeSpeed = 10;
+// const startDelay = 100;
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Select all project cards on the page
+//     const projectCards = document.querySelectorAll('.project-content');
+
+//     /**
+//      * This is our generic animation function. It takes a single project card
+//      * element, reads its data attributes, and builds the chained animation.
+//      */
+//     const playAnimationForCard = (card) => {
+//         // Find the child elements within THIS card
+//         const h1Target = card.querySelector('h1');
+//         const pTarget = card.querySelector('p');
+//         const h3Target = card.querySelector('h3');
+//         const preTarget = card.querySelector('pre');
+
+//         // Read the text from the card's data attributes
+//         const h1Text = card.dataset.h1 || '';
+//         const pText = card.dataset.p || '';
+//         const h3Text = card.dataset.h3 || '';
+        
+//         // Process the <pre> text: split by '|' and join with newlines
+//         const preText = (card.dataset.pre || '').split('|').join('\n');
+
+//         // An array to hold Typed instances for this specific card
+//         let typedInstances = [];
+
+//         // Function to reset only this card's content
+//         const resetCard = () => {
+//             typedInstances.forEach(t => t.destroy());
+//             typedInstances = [];
+//             h1Target.innerHTML = '';
+//             pTarget.innerHTML = '';
+//             h3Target.innerHTML = '';
+//             preTarget.innerHTML = '';
+//         };
+
+//         resetCard();
+
+//         // Start the animation chain
+//         const typeH1 = new Typed(h1Target, {
+//             strings: [h1Text], typeSpeed: typeSpeed * 3, showCursor: false,
+//             onComplete: () => typeDescription()
+//         });
+
+//         function typeDescription() {
+//             const typeP = new Typed(pTarget, {
+//                 strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
+//                 onComplete: () => typeTechStackHeader()
+//             });
+//             typedInstances.push(typeP);
+//         }
+//         function typeTechStackHeader() {
+//             const typeH3 = new Typed(h3Target, {
+//                 strings: [h3Text], typeSpeed: typeSpeed, startDelay: startDelay, showCursor: false,
+//                 onComplete: () => typePreBlock()
+//             });
+//             typedInstances.push(typeH3);
+//         }
+//         function typePreBlock() {
+//             const typePre = new Typed(preTarget, {
+//                 strings: [preText], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '_', loop: false,
+//                 onComplete: (self) => self.cursor.style.display = 'none'
+//             });
+//             typedInstances.push(typePre);
+//         }
+        
+//         typedInstances.push(typeH1);
+//     };
+
+//     // --- TRIGGER LOGIC using Intersection Observer ---
+    
+//     const observerOptions = {
+//         root: null,
+//         threshold: 0.25 // Trigger when 25% of the card is visible
+//     };
+
+//     const observer = new IntersectionObserver((entries, observer) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 const card = entry.target;
+//                 // Play the animation for the card that just entered the view
+//                 playAnimationForCard(card);
+//                 // Stop observing this card so the animation doesn't re-run
+//                 observer.unobserve(card);
+//             }
+//         });
+//     }, observerOptions);
+
+//     // Tell the observer to watch each project card
+//     projectCards.forEach(card => {
+//         observer.observe(card);
+//     });
+// });
+
+// // --- CONFIGURATION ---
+// // Set your desired speed here. Lower number = faster typing.
+// const typeSpeed = 30; // 30ms is fast and readable
+// const startDelay = 100;
+
+// // --- ANIMATION FUNCTIONS ---
+// // All functions are now defined here, in one place.
+
+// // An object to hold our Typed instances so we can destroy them later
+// let typedInstances = [];
+
+// // Function to clear previous content and animations
+// function resetPedalogicalAnimation() {
+//     typedInstances.forEach(t => t.destroy());
+//     typedInstances = [];
+//     document.getElementById('type-h1').innerHTML = '';
+//     document.getElementById('type-p').innerHTML = '';
+//     document.getElementById('type-h3').innerHTML = '';
+//     document.getElementById('type-pre').innerHTML = '';
+// }
+
+// // Main function to start the entire animation chain
+// function playPedalogicalAnimation() {
+//     resetPedalogicalAnimation();
+
+//     const typeH1 = new Typed('#type-h1', {
+//         strings: ['PEDALOGICAL'],
+//         typeSpeed: typeSpeed, // Using your variable
+//         showCursor: false,
+//         onComplete: () => typeDescription()
+//     });
+
+//     function typeDescription() {
+//         const typeP = new Typed('#type-p', {
+//             strings: ['A brief but engaging description of the project goes here.'],
+//             typeSpeed: typeSpeed, // Using your variable
+//             startDelay: startDelay,
+//             showCursor: false,
+//             onComplete: () => typeTechStackHeader()
+//         });
+//         typedInstances.push(typeP);
+//     }
+    
+//     function typeTechStackHeader() {
+//         const typeH3 = new Typed('#type-h3', {
+//             strings: ['TECH STACK'],
+//             typeSpeed: typeSpeed, // Using your variable
+//             startDelay: startDelay,
+//             showCursor: false,
+//             onComplete: () => typePreBlock()
+//         });
+//         typedInstances.push(typeH3);
+//     }
+
+//     function typePreBlock() {
+//         const techStack = `&gt; C#
+// &gt; HTML/CSS
+// &gt; .NET
+// &gt; Blazor
+// &gt; PostgreSQL`;
+//         const typePre = new Typed('#type-pre', {
+//             strings: [techStack],
+//             typeSpeed: typeSpeed, // Using your variable
+//             startDelay: startDelay,
+//             cursorChar: '_',
+//             loop: false,
+//             onComplete: (self) => self.cursor.style.display = 'none'
+//         });
+//         typedInstances.push(typePre);
+//     }
+    
+//     typedInstances.push(typeH1);
+// }
+
+
+// // --- TRIGGER LOGIC ---
+// // This block now ONLY contains the trigger logic that runs after the page loads.
+// document.addEventListener('DOMContentLoaded', () => {
+//     const pedalogicalContainer = document.getElementById('pedalogical');
+//     const config = { attributes: true, attributeFilter: ['class'] };
+
+//     const callback = (mutationsList) => {
+//         for (const mutation of mutationsList) {
+//             if (mutation.attributeName === 'class') {
+//                 if (pedalogicalContainer.classList.contains('active')) {
+//                     playPedalogicalAnimation(); // Calling the function defined above
+//                 } else {
+//                     resetPedalogicalAnimation(); // Calling the function defined above
+//                 }
+//             }
+//         }
+//     };
+
+//     const observer = new MutationObserver(callback);
+//     observer.observe(pedalogicalContainer, config);
+
+//     // Check the initial state on page load
+//     if (pedalogicalContainer.classList.contains('active')) {
+//         playPedalogicalAnimation();
+//     }
+// });
