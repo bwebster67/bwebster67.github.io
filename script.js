@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mutation.attributeName === 'class') {
                     const cardElement = mutation.target;
                     // ONLY play the animation if the initial scroll has already happened.
-                    if (cardElement.classList.contains('active')) {
+                    if (cardElement.classList.contains('active') && hasScrolledIntoView) {
                         playAnimationForCard(cardElement);
                     } else {
                         resetAnimationForCard(cardElement);
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Part 2: IntersectionObserver for the Initial Scroll ---
-    const intersectionObserverOptions = { threshold: 1 };
+    const intersectionObserverOptions = { threshold: 0.25 };
     
     // We only need to observe one element, like the first project card,
     // to know when the whole section is visible.
