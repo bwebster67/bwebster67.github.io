@@ -115,8 +115,7 @@ menu>a {
     text-decoration: none; /* removes underline */
     font-size: 20px;
     line-height: 25px;
-    transition: background-color 75ms var(--flick);
-    color: var(--dark);
+    transition: background-color 75ms var(--flick); color: var(--dark);
 }
 menu a:hover {
     background-color: var(--foam);
