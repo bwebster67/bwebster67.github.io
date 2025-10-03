@@ -115,11 +115,21 @@ menu>a {
     text-decoration: none; /* removes underline */
     font-size: 20px;
     line-height: 25px;
-    transition: background-color 75ms var(--flick);
-    color: var(--dark);
+    transition: background-color 75ms var(--flick); color: var(--dark);
+}
+menu a:hover {
+    background-color: var(--foam);
 }
 
-menu a:hover {
+.email {
+    text-decoration: none; /* removes underline */
+    font-size: 13px;
+    line-height: 25px;
+    transition: background-color 75ms var(--flick);
+    color: var(--dark);
+    margin: 0.25rem 0 0 0;
+}
+.email:hover {
     background-color: var(--foam);
 }
 

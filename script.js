@@ -80,6 +80,7 @@ let projectIDs = {
     2 : 'sha',
     3 : 'nav',
     4 : 'msb',
+    5 : 'xor',
 }
 
 function loadProjectCard(index) {
