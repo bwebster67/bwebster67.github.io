@@ -10,110 +10,221 @@
 </head>
 
 <body>
-    <header>
-        <!-- <h1>Benjamin Webster</h1> -->
-        <div class="social-links" style="font-family: DepartureMono, sans-serif;">
-            <a href="https://www.linkedin.com/in/ben-webster-0b4700293/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/bwebster67/"><i class="fab fa-github"></i></a>
-            <a href="mailto:bkwebster@willamette.edu"><i class="fas fa-envelope"></i></a>
+    <!-- Padding at top -->
+    <div class="header-pad">
+        <div class="max-width">
+            <!-- Headline element -->
+            <div class="headline">
+                <!-- Name header -->
+                <div>
+                    <span class="name-header" id="header">BEN WEBSTER</span>
+                    <span class="name-header-subtext">IN_DEVELOPMENT</span>
+                </div>
+                <menu>
+                    <a href="https://github.com/bwebster67/"> 
+                        > <i class="fab fa-github"></i>
+                        GITHUB
+                    </a>
+                    <a href="https://www.linkedin.com/in/ben-webster-0b4700293/">
+                        > <i class="fab fa-linkedin"></i>
+                        LINKEDIN
+                    </a>
+                    <a href="/resume.pdf"  target="_blank" title="Read PDF">
+                        > <i class="fas fa-file-alt"></i>
+                        RESUME
+                    </a>
+                </menu>
+            </div>
         </div>
-        <nav style="grid-column: 2;">
-            <a href="#about" class="nav-link">
-                <i class="fas fa-user"></i>
-                <span style="font-family: DepartureMono;">About</span>
-            </a>
-            <a href="#projects" class="nav-link">
-                <i class="fas fa-code"></i>
-                <span style="font-family: DepartureMono;">Projects</span>
-            </a>
-            <a href="#resume" class="nav-link">
-                <i class="fas fa-file-alt"></i>
-                <span style="font-family: DepartureMono;">Resume</span>
-            </a>
-        </nav>
-    </header>
-    
-    <div style="height: 5rem;"></div>
-
-
-    <div class="profile-container">
-        <div>
-            <!-- <h2>Hello, I am</h2> -->
-            <h1 style="font-family: GoogleSansCodeItalic, sans-serif; font-weight: 800;">Ben Webster</h1>
-            <h3 style="max-width: 70%;">Undergraduate Researcher, Tutor, and Computer Scientist</h3>
-        </div>
-        <!-- <p>Hi, I'm Benjamin Webster, a Computer Science and Data Science student at Willamette University</p> -->
-        <img src="headshot_cropped.jpg" alt="Profile Picture" class="profile-pic">
     </div>
-    
 
-    <div style="height: 5rem;"></div>
-    <div class="divider"></div>
+    <div class="section-1-container">
+        <img src="paperclip.svg" style="transform: scale(1.25); position: absolute; top: 8.25rem; left: 86rem;">
+        <img src="/geometry_circle.svg" style="position: absolute; z-index: -2; top: 10rem; left: -25rem">
+
+        <div class="brief-container"> 
+            <img class="brief" src="/brief.svg">
+            <img src="headshot_cropped.jpg" alt="Profile Picture" class="brief-image" style="padding: 1rem 0 0 38rem;">
+            <div class="brief-contents"> 
+                <pre class="brief-text" style="padding: 3rem 4rem 0 6rem;">
+  <span style="font-size: 33px;background-color: var(--foam);">BEN WEBSTER</span>  
+
+┌                                                         ┐ 
+  MAJORS --------------- <span>COMPUTER SCIENCE</span>, DATA SCIENCE
+  MINOR ---------------- MATHEMATICS
+  CURRENT RESEARCH ----- BOUNDED LLMS IN EDUCATION
+  GRADUATION YEAR ------ 2027
+  LOCATION ------------- SALEM, OR
+
+<br>
+├──────── EXPERIENCE ─────────────────────────
+
+ > Undergraduate Researcher, Theory-Bounded LLMs in Education
+ > Development and Maintinence on Full-Stack Education Platform   
+ > Computer Science and Data Science Tutor
+ > Winner in Willamette University DataFest 2024 and 2025
 
 
-    <section id="projects" class="fade-in">
-        <h2>Projects</h2>
-        <div class="project-grid">
+├────────── SKILLS ───────────────
+ <!-- > <i class="fab fa-python" style="margin: 0; padding: 0;"></i> PYTHON -->
+ > PYTHON           > DOTNET
+ > C#               > GIT/GITHUB 
+ > C                > DOCKER
+ > HTML/CSS         > BLAZOR 
+ > R                > LaTeK
+                    > PostgreSQL
+                    > NumPy
+                    > CI/CD 
 
-            <!-- Pedalogical -->
-            <div class="project-card" style="transform-style: preserve-3d" data-tilt data-tilt-max="5">
-                <div style="transform: translateZ(10px)"> 
-                    <h3>Pedalogical</h3>
-                    <p>Detailed description of project will appear here</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">.NET</span>
-                        <span class="tech-tag">Blazor</span>
-                        <span class="tech-tag">PostgreSQL</span>
+                </pre>
+
+
+                        <!-- ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬───────────┐
+                        │ esc │ f1  │ f2  │ f3  │ f4  │ f5  │ f6  │ f7  │ f8  │ f9  │ f10 │ f11 │ f12 │ power     │
+                        ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼───────────┤
+                        │  ~  │  !  │  @  │  #  │  $  │  %  │  ^  │  &  │  *  │  (  │  )  │  _  │  +  │           │
+                        │  `  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  —  │  =  │ delete    │
+                        ├─────┴─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┤
+                        │           │     │     │     │     │     │     │     │     │     │     │  {  │  }  │  |  │
+                        │ tab       │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  [  │  ]  │  \  │
+                        ├───────────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┴─────┤
+                        │           │     │     │     │     │     │     │     │     │     │  :  │  “  │           │
+                        │ caps lock │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  '  │ enter     │
+                        ├───────────┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴──┬──┴───────────┤
+                        │              │     │     │     │     │     │     │     │  <  │  >  │  ?  │              │
+                        │ shift        │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │ shift        │
+                        ├─────┬──────┬─┴───┬─┴───┬─┴─────┴─────┴─────┴─────┴─────┼─────┼─────┼─────┴┬──────┬──────┤
+                        │     │      │     │     │                               │     │     ├──────┼──────┼──────┤
+                        │ fn  │ ctrl │ opt │ cmd │           s p a c e           │ cmd │ opt ├──────┼──────┼──────┤"
+└───── -->
+            </div>
+        </div>
+    </div>
+    <div class="section-2-container">
+        <pre class="projects-header">
+| | | | | | |   P R O J E C T S   | | | | | | |
+        </pre>
+        <div class="project-section-max-width">
+            <div class="project-section-grid">
+
+                <div class="universal-project-card" id="universal-project-card"> 
+
+                    <!-- Pedalogical Project Card -->
+                    <div id="pedalogical" class="project-content"
+                            data-h1="PEDALOGICAL"
+                            data-p="
+PEDALOGICAL is a full-stack education platform that leverages Large Language Models embedded with metacognitive scaffolding through structured prompts grounded
+in the Feynman Technique and learning science literature. I co-authored an upcoming paper, 'Not All Chatbots Teach: Evidence for Pedagogical Design in
+AI-Assisted Technical Education', which will be presented at ACM's SIGCITE 2025 Conference."
+                            data-h3="TECH STACK"
+                            data-pre="> C#|> HTML/CSS|> .NET|> Blazor|> PostgreSQL"
+                            data-a1="LIVE SITE"
+                            data-a2="PUBLISHED PAPER (COMING SOON)">
+                        <h1><span class="type-target"></span></h1>
+                        <p><span class="type-target"></span></p>
+                        <h3><span class="type-target"></span></h3>
+                        <pre><span class="type-target"></span></pre>
+                        <br>
+                        <br>
+                        <a href="https://pedalogical.com" target="_blank"><span class="type-target-a1"></span></a>
+                        <a href="https://www.sigite.org/" target="_blank"><span class="type-target-a2"></span></a>
+                    </div>
+
+                    <!-- GJK Project Card -->
+                    <div id="gjk" class="project-content"
+                            data-h1="GJK COLLISION"
+                            data-p="A brief but engaging description of the project goes here."
+                            data-h3="TECH STACK"
+                            data-pre="> Python|> NumPy|> Matplotlib">
+                        <h1 id="type-h1"><span class="type-target"></span></h1>
+                        <p id="type-p"><span class="type-target"></span></p>
+                        <h3 id="type-h3"><span class="type-target"></span></h3>
+                        <pre id="type-pre"><span class="type-target"></span></pre>
+                    </div>
+
+                    <!-- GJK Project Card -->
+                    <div id="sha" class="project-content"
+                            data-h1="SHA256 ENCRYPTION"
+                            data-p="A brief but engaging description of the project goes here."
+                            data-h3="TECH STACK"
+                            data-pre="">
+                        <h1 id="type-h1"><span class="type-target"></span></h1>
+                        <p id="type-p"><span class="type-target"></span></p>
+                        <h3 id="type-h3"><span class="type-target"></span></h3>
+                        <pre id="type-pre"><span class="type-target"></span></pre>
+                    </div>
+
+                    <!-- Campus Navigation Project Card -->
+                    <div id="nav" class="project-content"
+                            data-h1="CAMPUS NAVIGATION"
+                            data-p="A brief but engaging description of the project goes here."
+                            data-h3="TECH STACK"
+                            data-pre="">
+                        <h1 id="type-h1"><span class="type-target"></span></h1>
+                        <p id="type-p"><span class="type-target"></span></p>
+                        <h3 id="type-h3"><span class="type-target"></span></h3>
+                        <pre id="type-pre"><span class="type-target"></span></pre>
+                    </div>
+
+                    <!-- Magic Speaker Boy Project Card -->
+                    <div id="msb" class="project-content"
+                            data-h1="MAGIC SPEAKER BOY"
+                            data-p="A brief but engaging description of the project goes here."
+                            data-h3="TECH STACK"
+                            data-pre="">
+                        <h1 id="type-h1"><span class="type-target"></span></h1>
+                        <p id="type-p"><span class="type-target"></span></p>
+                        <h3 id="type-h3"><span class="type-target"></span></h3>
+                        <pre id="type-pre"><span class="type-target"></span></pre>
                     </div>
                 </div>
-            </div>
 
-            <!-- Campus Nav -->
-            <div class="project-card" style="transform-style: preserve-3d" data-tilt data-tilt-max="5">
-                <h3>Campus Navigation</h3>
-                <p>Detailed description of project will appear here</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">HTML</span>
+                <!-- <div style="font-family: 'DepartureMono'; font-size: 11px; line-height: .9;"> -->
+<!-- |<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>|<br>| -->
+                <!-- </div> -->
+                <div class="project-grid-wrapper">
+                    <div class="project-grid">
+                        <div class="project-label" data-project = "pedalogical">
+                            <div class="project-name">
+                                PEDALOGICAL
+                            </div>
+                        </div>
+                        <div class="project-label" data-project="gjk">
+                            <div class="project-name">
+                                GJK COLLISION
+                            </div>
+                        </div>
+                        <div class="project-label" data-project="sha">
+                            <div class="project-name">
+                                SHA256
+                            </div>
+                        </div>
+                        <div class="project-label" data-project="nav">
+                            <div class="project-name">
+                                CAMPUS NAVIGATION
+                            </div>
+                        </div>
+                        <div class="project-label" data-project="msb">
+                            <div class="project-name">
+                                MAGIC SPEAKER BOY
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-
-            <!-- SHA256 -->
-            <div class="project-card" style="transform-style: preserve-3d" data-tilt data-tilt-max="5">
-                <h3>SHA256</h3>
-                <p>Detailed description of project will appear here</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">C</span>
-                </div>
-            </div>
-
         </div>
-    </section>
-    
-    <section id="resume" class="fade-in">
-        <h2>Resume</h2>
-        <a href="/resume.pdf" download="Ben Webster's Resume" class="resume-download">
-            Download Resume
-            <i class="fas fa-arrow-down"></i>
-        </a>
-        <a href="/resume.pdf"  target="_blank" title="Read PDF" class="resume-download">
-            Open Resume
-            <i class="fas fa-file-alt"></i>
-        </a>
-    </section>
-    
-    <footer>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/ben-webster-0b4700293/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/bwebster67/"><i class="fab fa-github"></i></a>
-            <a href="mailto:bkwebster@willamette.edu"><i class="fas fa-envelope"></i></a>
-        </div>
-    </footer>
+    </div>
 
+    <!-- Custom script -->
+    <script src="script.js"></script>
 
-    <!-- <script src="tilt.jquery.js"></script> -->
+    <!-- Card tilt script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <!-- Typed.js script -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <div style="height: 5vh;"> </div>
 </body>
 </html>

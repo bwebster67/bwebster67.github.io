@@ -1,0 +1,8 @@
+<svg width="800" height="800" viewBox="0 0 450 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="450" height="450"/>
+<circle cx="225" cy="225" r="224.5" stroke="#333333"/>
+<path d="M448.233 224.5H3.7666L226 0.708984L448.233 224.5Z" stroke="#333333"/>
+<path d="M30.4902 113L335.51 113L183 448.791L30.4902 113Z" stroke="black"/>
+<path d="M205.132 225L447.868 225L326.5 351.279L205.132 225Z" stroke="#333333"/>
+<line x1="335.5" y1="420.007" x2="335.5" y2="113" stroke="black"/>
+</svg>
