@@ -135,7 +135,7 @@ projectLabels.forEach((label, index) => {
 // 
 
 // --- CONFIGURATION ---
-const typeSpeed = 10;
+const typeSpeed = 9; // lower is faster
 const startDelay = 100;
 
 // A Map to store Typed instances for each card, so we can manage them.
@@ -169,11 +169,15 @@ function playAnimationForCard(card) {
     const pTarget = card.querySelector('p .type-target');
     const h3Target = card.querySelector('h3 .type-target');
     const preTarget = card.querySelector('pre .type-target');
+    const a1Target = card.querySelector('a .type-target-a1');
+    const a2Target = card.querySelector('a .type-target-a2');
 
     const h1Text = card.dataset.h1 || '';
     const pText = card.dataset.p || '';
     const h3Text = card.dataset.h3 || '';
     const preText = (card.dataset.pre || '').split('|').join('\n');
+    const a1Text = card.dataset.a1 || '';
+    const a2Text = card.dataset.a2 || '';
     
     let typedInstances = [];
     cardAnimationState.set(card, typedInstances);
@@ -185,7 +189,7 @@ function playAnimationForCard(card) {
 
     function typeDescription() {
         const typeP = new Typed(pTarget, {
-            strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '█',
+            strings: [pText], typeSpeed: typeSpeed, startDelay: startDelay * 2, cursorChar: '█',
             onComplete: (self) => {
                 self.cursor.style.display = 'none';
                 typeTechStackHeader();
@@ -206,9 +210,29 @@ function playAnimationForCard(card) {
     function typePreBlock() {
         const typePre = new Typed(preTarget, {
             strings: [preText], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '█', loop: false,
-            onComplete: (self) => self.cursor.style.display = 'none'
+            onComplete: (self) => {
+                self.cursor.style.display = 'none';
+                typeA1Block();
+            }
         });
         typedInstances.push(typePre);
+    }
+    function typeA1Block() {
+        const typeA1 = new Typed(a1Target, {
+            strings: [a1Text], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '█', loop: false,
+            onComplete: (self) => {
+                self.cursor.style.display = 'none';
+                typeA2Block();
+            }
+        });
+        typedInstances.push(typeA1);
+    }
+    function typeA2Block() {
+        const typeA2 = new Typed(a2Target, {
+            strings: [a2Text], typeSpeed: typeSpeed, startDelay: startDelay, cursorChar: '█', loop: false,
+            onComplete: (self) => self.cursor.style.display = 'none'
+        });
+        typedInstances.push(typeA2);
     }
     
     typedInstances.push(typeH1);

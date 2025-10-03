@@ -113,8 +113,8 @@ menu {
 
 menu>a {
     text-decoration: none; /* removes underline */
-    font-size: 16.5px;
-    line-height: 21px;
+    font-size: 20px;
+    line-height: 25px;
     transition: background-color 75ms var(--flick);
     color: var(--dark);
 }
@@ -204,49 +204,47 @@ menu a:hover {
     font-family: 'DepartureMono';
     font-size: 28px;
     text-align: center;
-    margin: 2rem 0 2rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 .project-section-max-width {
-    padding: 0 3rem 0 3rem;
+    margin: 0 2rem 0 2rem;
+    min-height: 75vh;
     perspective: 300px;
+    border: 20px solid var(--aluminum);
+    background-color: var(--soot);
+    z-index: 10;
+    position: relative;
+    box-shadow: inset 0 0 75px 40px rgba(0, 0, 0, 0.4);
 }
 
 .project-section-grid {
     display: grid;
+    height: calc(100% - 3rem);
     grid-template-columns: 50vw auto;
     gap: 1rem;
     padding: 1rem 3rem 1rem 3rem;
-    background-color: var(--soot);
-    /* temp */
-    transform: rotateX(0.5deg);
+    transform: rotateX(0.75deg);
     transform-origin: center top;
+}
+
+.project-grid-wrapper {
+    padding: 0 1rem 0 3rem;
+    border-left: 2px solid var(--pumpkin);
 }
 
 .project-grid {
     display: grid;
-    grid-template-rows: repeat(8, auto);
+    /* height: 100%; */
+    grid-template-rows: repeat(6, auto);
     gap: 1rem;
     justify-items: left;
-    padding: 0 1rem 0 3rem;
-    border-left: 2px solid var(--pumpkin);
-    /* box-shadow: 0px 0 4px rgba(255, 153, 0, 0.6); */
-}
-/* This creates the glowing element */
-.project-grid::before {
-    content: ""; /* Pseudo-elements must have a content property */
-    position: absolute;
-    top: 0;
-    left: -2px; /* Position it directly over the 2px border */
-    width: 2px;
-    height: 100%;
-
-    /* The Glow Effect! */
 }
 
 .project-label {
     font-family: 'DepartureMono';
     font-size: 28px;
+    /* height: 30px; */
     font-weight: 600;
     /* color: var(--cement); */
     color: var(--pumpkin);
@@ -273,7 +271,7 @@ menu a:hover {
         0 0/calc(100% - var(--s)) calc(100% - var(--s)),
         conic-gradient(#000 0 0) content-box;
 
-    text-shadow: 0 0 7px rgba(255, 153, 0, 0.6);
+    text-shadow: 0 0 6px rgba(255, 153, 0, 0.6);
 }
 
 .project-label.selected .project-name {
@@ -283,11 +281,11 @@ menu a:hover {
 
 .universal-project-card {
     font-family: 'DepartureMono';
+    /* height: 100%; */
 }
 
 .project-content {
     color: var(--pumpkin); 
-    background-color: var(--soot);
 
     display: none; /* hide all descriptions by default */
     font-family: "DepartureMono"; 
@@ -324,6 +322,29 @@ menu a:hover {
 }
 .project-content pre {
     margin: 0 0 0 0 ;
+}
+.project-content a {
+    color: var(--pumpkin);
+    text-align: center;
+    cursor: pointer;
+    --t: 2px;  /* the thickness of the border */
+    --g: 8px; /* the gap between the border and image */
+    padding: calc(var(--g) + var(--t));
+}
+.project-content a:hover {
+    --s: 10px; /* the size on the corner */
+    --t: 2px;  /* the thickness of the border */
+    --g: 8px; /* the gap between the border and image */
+
+    padding: calc(var(--g) + var(--t));
+    outline: var(--t) solid var(--pumpkin); /* the color */
+    outline-offset: calc(-1*var(--t));
+    mask:
+        conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+        0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+        conic-gradient(#000 0 0) content-box;
+
+    text-shadow: 0 0 6px rgba(255, 153, 0, 0.6);
 }
 
 /* This is the essential Typed.js cursor styling */
@@ -525,56 +546,6 @@ section {
     
 }
 
-/* .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-} */
-
-.tech-tag {
-    background-color: var(--light-gray);
-    padding: 0.3rem 0.8rem;
-    border-radius: 1rem;
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
-}
-
-.resume-download {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: var(--secondary);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.resume-download:hover {
-    transform: scale(1.05);
-}
-
-footer {
-    background-color: var(--primary);
-    padding: 2rem;
-    margin-top: 4rem;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.social-links a {
-    color: var(--header-color);
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--secondary);
-}
 
 @media (max-width: 768px) {
     header {
