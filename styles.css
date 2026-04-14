@@ -218,7 +218,7 @@ menu a:hover {
 }
 
 .project-section-max-width {
-    margin: 0 2rem 0 2rem;
+    margin: 0 1rem 0 1rem;
     min-height: 75vh;
     perspective: 300px;
     border: 20px solid var(--aluminum);
@@ -231,15 +231,15 @@ menu a:hover {
 .project-section-grid {
     display: grid;
     height: calc(100% - 3rem);
-    grid-template-columns: 50vw auto;
+    grid-template-columns: auto auto;
     gap: 1rem;
-    padding: 1rem 3rem 1rem 3rem;
+    padding: 1rem 2rem 1rem 2rem;
     transform: rotateX(0.75deg);
     transform-origin: center top;
 }
 
 .project-grid-wrapper {
-    padding: 0 1rem 0 3rem;
+    padding: 0 1rem 0 1rem;
     border-left: 2px solid var(--pumpkin);
 }
 
